@@ -2,13 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Login } from '../login/login';
 import { Signup } from '../signup/signup';
-
-/**
- * Generated class for the WelcomePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Products } from '../products/products';
+import { TabsPage } from '../tabs/tabs';
 
 @IonicPage()
 @Component({
@@ -18,6 +13,9 @@ import { Signup } from '../signup/signup';
 export class Welcome {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    if(localStorage.getItem('userData')) {
+      this.navCtrl.setRoot(TabsPage);
+    }
   }
 
   ionViewDidLoad() {
@@ -30,6 +28,10 @@ export class Welcome {
 
   signup() {
     this.navCtrl.push(Signup);
+  }
+
+  products() {
+    this.navCtrl.push(Products);
   }
 
 }

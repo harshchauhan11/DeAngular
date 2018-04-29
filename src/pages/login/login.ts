@@ -1,13 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
-
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { AuthServiceProvider } from "../../providers/auth-service/auth-service";
+import { Signup } from '../signup/signup';
 
 @IonicPage()
 @Component({
@@ -15,17 +10,37 @@ import { TabsPage } from '../tabs/tabs';
   templateUrl: 'login.html',
 })
 export class Login {
+  responseData: any;
+  userData = { username: "", password: "" };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public authService: AuthServiceProvider) {
+  }
+
+  login() {
+    this.authService.postData(this.userData, "login").then(
+      result => {
+        this.responseData = result;
+        if (this.responseData.userData) {
+          console.log(this.responseData);
+          localStorage.setItem("userData", JSON.stringify(this.responseData));
+          this.navCtrl.push(TabsPage);
+        } else {
+          console.log("User already exists");
+        }
+      },
+      err => {
+        // Error log
+      }
+    );
+  }
+
+  signup() {
+    //Signup page link
+    this.navCtrl.push(Signup);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Login');
-  }
-
-  login(){
-    // Your app login API web service call triggers 
-    this.navCtrl.push(TabsPage, {}, {animate: false});
   }
 
 }

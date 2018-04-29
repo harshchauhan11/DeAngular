@@ -6,6 +6,7 @@
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Banana Project</h2>
+  <h2>Welcome {{userDetails.name}} to Banana Project</h2>
+  <h3>Email: {{userDetails.email}}</h3>
   <button ion-button color="primary" (click)="logout()">Logout</button>
 </ion-content>

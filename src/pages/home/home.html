@@ -1,12 +1,32 @@
 <ion-header>
   <ion-navbar>
-    <img ion-right src="assets/imgs/logo.png" class="navbarLogo" />
-    <ion-title>Home</ion-title>
+    <ion-row>
+      <ion-col>
+        <img ion-right src="assets/imgs/logo_white.png" class="navbarLogo" />
+      </ion-col>
+      <ion-col text-right>
+        <!-- <ion-title>Home</ion-title> -->
+        <button ion-button (click)="launchLocationPage()">{{loc.name}}</button>
+      </ion-col>
+    </ion-row>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome {{userDetails.name}} to Banana Project</h2>
+  <h2>Welcome {{userDetails.fname}} to Delvrt !</h2>
   <h3>Email: {{userDetails.email}}</h3>
-  <button ion-button color="primary" (click)="logout()">Logout</button>
+  <h5>Location: {{loc.name}} [{{loc.lat}} {{loc.lng}}]</h5>
+  <button ion-button color="deBlue" (click)="logout()">Logout</button>
 </ion-content>
+
+<!-- <ion-content>
+ 
+  <div #pleaseConnect id="please-connect">
+      <p>Please connect to the Internet...</p>
+  </div>
+
+  <div #map id="map">
+      <ion-spinner></ion-spinner>
+  </div>
+
+</ion-content> -->

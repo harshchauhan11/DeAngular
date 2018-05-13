@@ -17,10 +17,11 @@ export class Login {
   }
 
   login() {
-    this.authService.postData(this.userData, "login").then(
+    this.authService.postData(this.userData, "login.php").then(
       result => {
+        // console.log(result);
         this.responseData = result;
-        if (this.responseData.userData) {
+        if (this.responseData.status) {
           console.log(this.responseData);
           localStorage.setItem("userData", JSON.stringify(this.responseData));
           this.navCtrl.push(TabsPage);

@@ -1,27 +1,87 @@
 import { Component } from "@angular/core";
-import { NavController, App } from "ionic-angular";
+import { NavController, App, ModalController } from "ionic-angular";
 import { AuthServiceProvider } from "../../providers/auth-service/auth-service";
+import { LocationSelectPage } from '../location-select/location-select';
+import { LocationParamProvider } from '../../providers/location-param/location-param'
 
 @Component({
   selector: "page-home",
   templateUrl: "home.html"
 })
+
 export class HomePage {
   userDetails: any;
   responseData: any;
+  // loc: any;
+  loc = { lat: null, lng: null, name: "" };
+  locationName = "Select Location";
+  // loc: LocationParam[];
 
-  userPostData = { user_id: "", token: "" };
+  userPostData = { uid: 0, eType: 1, token: "", lat: null, lng: null, place: "" };
 
   constructor(
     public navCtrl: NavController,
     public app: App,
-    public authService: AuthServiceProvider
+    public authService: AuthServiceProvider,
+    public modalCtrl: ModalController,
+    private locationParam: LocationParamProvider
   ) {
     const data = JSON.parse(localStorage.getItem("userData"));
-    this.userDetails = data.userData;
+    this.userDetails = data.body;
 
-    this.userPostData.user_id = this.userDetails.user_id;
+    this.userPostData.uid = parseInt(this.userDetails.uid, 10);
     this.userPostData.token = this.userDetails.token;
+    this.loc = locationParam.loc;
+  }
+
+  launchLocationPage() {
+    // let loc = this.loc;
+    let modal = this.modalCtrl.create(LocationSelectPage);
+    
+
+    modal.onDidDismiss(location => {
+      if(location != undefined) {
+        console.log("In HOME, " + location);
+        let loc = {
+            lat: null,
+            lng: null,
+            name: ""
+          };
+        loc.lat = location.lat;
+        loc.lng = location.lng;
+        loc.name = location.name;
+        this.locationName = location.name;
+        this.loc = loc;
+      } else {
+        console.log("User denied geolocation prompt");
+      }
+
+      this.userPostData.lat = this.loc.lat;
+      this.userPostData.lng = this.loc.lng;
+      this.userPostData.place = this.loc.name;
+      console.log(this.userPostData);
+      this.authService.postData(this.userPostData, "location.php").then(
+        result => {
+          console.log(result);
+          this.responseData = result;
+          if (this.responseData.status) {
+            console.log(this.responseData);
+            // localStorage.setItem("userData", JSON.stringify(this.responseData));
+            // this.navCtrl.push(TabsPage);
+          } else {
+            console.log("User already exists");
+          }
+        },
+        err => {
+          console.log(err);
+        }
+      );
+    });
+    // modal.onDidDismiss(() => {
+    //   console.log("User denied geolocation prompt");
+    // });
+
+    modal.present();
   }
 
   backToWelcome() {

@@ -1,9 +1,15 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>SIGNUP</ion-title>
+    </ion-navbar>
+  </ion-header>
+
 <ion-content padding class="appBackground">
   <ion-card>
-    <ion-card-header>
-      Registration
+    <ion-card-header text-center>
+      Be Part of Awesome !
     </ion-card-header>
-    <ion-card-content>
+    <ion-card-content text-center>
       <ion-list>
         <ion-item>
           <ion-label stacked>Name</ion-label>
@@ -25,8 +31,8 @@
           <ion-input type="password" [(ngModel)]="userData.password"></ion-input>
         </ion-item>
 
-        <button ion-button full color="success" (click)="signup()">Sign up</button>
-        <a href="#" (click)="login()">Login Page</a>
+        <button ion-button full color="deBlue" (click)="signup()">Sign up</button>
+        <p><small>Already been a part of Awesomeness ?<br/>Just <b><a href="#" (click)="login()">SIGNIN</a></b></small></p>
       </ion-list>
     </ion-card-content>
   </ion-card>

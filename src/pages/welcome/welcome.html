@@ -1,9 +1,9 @@
-<ion-content padding id="welcome">
-  <img src="assets/imgs/logo.png" class="logo"/>
+<ion-content padding id="welcome" text-center>
   <ion-grid>
     <ion-row>
-      <ion-col>
-        <h1>Welcome to Your App</h1>
+      <ion-col center text-center>
+          <img src="assets/imgs/logo_white.png" class="logo" />
+        <h4 class="marginBottom white">we make anything deliverable</h4>
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -11,14 +11,21 @@
   <ion-grid >
     <ion-row>
       <ion-col center text-center>
-          <button ion-button full color="success" (click)="products()">Products</button>
-        <button ion-button full color="success" (click)="signup()">Sign up</button>
+          <!-- <button ion-button full color="success" (click)="products()">Products</button> -->
+        <button ion-button full color="deBlue" (click)="signup()">Sign up</button>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col center text-center>
-        <button ion-button full color="lightText" (click)="login()">Log in</button>
+        <button ion-button full color="deBlue" (click)="login()">Log in</button>
       </ion-col>
     </ion-row>
+  </ion-grid><br/><br/>
+  <ion-grid>
+      <ion-row>
+        <ion-col center text-center>
+          <small class="copyright">&copy; Prevolt</small>
+        </ion-col>
+      </ion-row>
   </ion-grid>
 </ion-content>

@@ -15,6 +15,12 @@ import { Products } from '../pages/products/products';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
+import { ConnectivityServiceProvider } from '../providers/connectivity-service/connectivity-service';
+import { GoogleMapsProvider } from '../providers/google-maps/google-maps';
+import { Geolocation } from '@ionic-native/geolocation';
+import { Network } from '@ionic-native/network';
+import { LocationSelectPage } from '../pages/location-select/location-select';
+import { LocationParamProvider } from '../providers/location-param/location-param';
 
 @NgModule({
   declarations: [
@@ -26,7 +32,8 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
     Login,
     Signup,
     TabsPage,
-    Products
+    Products,
+    LocationSelectPage
   ],
   imports: [
     BrowserModule, HttpModule,
@@ -42,13 +49,19 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
     Login,
     Signup,
     TabsPage,
-    Products
+    Products,
+    LocationSelectPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    AuthServiceProvider,
+    ConnectivityServiceProvider,
+    GoogleMapsProvider,
+    Geolocation,
+    Network,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthServiceProvider
+    LocationParamProvider
   ]
 })
 export class AppModule {}

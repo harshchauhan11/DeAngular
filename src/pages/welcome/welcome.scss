@@ -1,16 +1,34 @@
 page-welcome {
-    #welcome{
-        background: color($colors, energy);
-        h1{
-            font-size: 52px;
-            margin-top:50px
-        }
-        .marginTop{
-            margin-top:150px;
-        }
-        .logo{
-            height: 100px;
-        }
+  #welcome {
+    // background: color($colors, deBlue);
+    background: url(/assets/imgs/5.jpg) center center / cover no-repeat;
+    h1 {
+      font-size: 52px;
+      margin-top: 20px;
     }
+    .marginTop {
+      margin-top: 150px;
     }
-    
+    .marginBottom {
+        margin-bottom: 100px;
+    }
+    .white {
+        color: #fff;
+    }
+    .logo {
+      margin-top: 50px;
+      height: 100px;
+    //   -webkit-filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.5));
+      filter: drop-shadow(3px 3px 5px rgba(0, 0, 0, 0.9));
+    //   -ms-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=2, OffY=2, Color='#444')";
+    //   filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=12, OffY=12, Color='#444')";
+    }
+    button {
+        border-radius: 5px;
+    }
+    .copyright {
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+  }
+}

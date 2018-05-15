@@ -7,6 +7,7 @@
       <ion-col text-right>
         <!-- <ion-title>Home</ion-title> -->
         <button ion-button (click)="launchLocationPage()">{{loc.name}}</button>
+        <button ion-button color="deBlue" (click)="logout()">Logout</button>
       </ion-col>
     </ion-row>
   </ion-navbar>
@@ -14,9 +15,22 @@
 
 <ion-content padding>
   <h2>Welcome {{userDetails.fname}} to Delvrt !</h2>
-  <h3>Email: {{userDetails.email}}</h3>
-  <h5>Location: {{loc.name}} [{{loc.lat}} {{loc.lng}}]</h5>
-  <button ion-button color="deBlue" (click)="logout()">Logout</button>
+  <!-- <h3>Email: {{userDetails.email}}</h3> -->
+  <!-- <h5>Location: {{loc.name}} [{{loc.lat}} {{loc.lng}}]</h5> -->
+  
+
+  <ion-list no-lines>
+    <ion-item class="retailL" *ngFor="let location of locations.data">
+      <ion-avatar item-left>
+        <!-- <ion-icon name="pin"></ion-icon> -->
+        <img ion-right src="http://via.placeholder.com/100x100" class="storePic" />
+      </ion-avatar>
+      <h2>{{location.storeName}}</h2>
+      <p>{{location.distance}}</p>
+    </ion-item>
+    <ion-item-divider></ion-item-divider>
+    
+  </ion-list>
 </ion-content>
 
 <!-- <ion-content>

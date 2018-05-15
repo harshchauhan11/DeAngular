@@ -21,6 +21,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { Network } from '@ionic-native/network';
 import { LocationSelectPage } from '../pages/location-select/location-select';
 import { LocationParamProvider } from '../providers/location-param/location-param';
+import { Locations } from '../providers/locations/locations';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { LocationParamProvider } from '../providers/location-param/location-para
     Geolocation,
     Network,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    LocationParamProvider
+    LocationParamProvider,
+    Locations
   ]
 })
 export class AppModule {}

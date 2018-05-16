@@ -22,6 +22,7 @@ import { Network } from '@ionic-native/network';
 import { LocationSelectPage } from '../pages/location-select/location-select';
 import { LocationParamProvider } from '../providers/location-param/location-param';
 import { Locations } from '../providers/locations/locations';
+import { ApiServiceProvider } from '../providers/api-service/api-service';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { Locations } from '../providers/locations/locations';
     Network,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     LocationParamProvider,
-    Locations
+    Locations,
+    ApiServiceProvider
   ]
 })
 export class AppModule {}

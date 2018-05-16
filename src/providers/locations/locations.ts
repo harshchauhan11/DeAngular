@@ -11,12 +11,13 @@ export class Locations {
   constructor(public http: Http, public authService: AuthServiceProvider) {}
 
   load(loc) {
+    // debugger;
     if (this.data) {
       return Promise.resolve(this.data);
     }
 
     return new Promise(resolve => {
-      this.authService.postData(loc, "near.php").then(
+      this.authService.getNearLocations(loc).then(
         result => {
           // this.http.get('assets/data/locations.json').map(res => res.json()).subscribe(data => {
 

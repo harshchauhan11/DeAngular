@@ -42,6 +42,30 @@ export class HomePage {
     this.loc = locationParam.loc;
   }
 
+  ionViewDidEnter() {
+    this.authService.getSavedLocations(this.userPostData).then(
+      result => {
+        this.responseData = result;
+        if (this.responseData.status) {
+          console.log(
+            "responseData = " + JSON.stringify(this.responseData.body)
+          );
+          let l = JSON.parse(JSON.stringify(this.responseData.body[0]));
+          this.loc.lat = l.latitude;
+          this.loc.lng = l.longitude;
+          this.loc.name = l.place;
+          console.log("Loc, viewDidEnter = " + JSON.stringify(this.loc));
+          this.getNearLocations(this.loc);
+        } else {
+          console.log("Location doesn't exists for this User.");
+        }
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+
   launchLocationPage() {
     // let loc = this.loc;
     let modal = this.modalCtrl.create(LocationSelectPage);
@@ -60,33 +84,23 @@ export class HomePage {
         this.locationName = location.name;
         this.loc = loc;
 
-        let locationsLoaded = this.locations.load(this.loc);
-        console.log("LocationsLoaded = " + locationsLoaded);
-        Promise.all([locationsLoaded]).then(result => {
-          console.log("Result = " + result);
-          let locations = result[0];
-          console.log("Locations = " + locations);
-          debugger;
-          for (let location of locations) {
-            console.log(location);
-            // this.maps.addMarker(location.latitude, location.longitude);
-          }
-        });
+        this.getNearLocations(this.loc);
 
         this.userPostData.lat = this.loc.lat;
         this.userPostData.lng = this.loc.lng;
         this.userPostData.place = this.loc.name;
         console.log(this.userPostData);
-        this.authService.postData(this.userPostData, "location.php").then(
+        debugger;
+        this.authService.addLocation(this.userPostData).then(
           result => {
             console.log(result);
             this.responseData = result;
             if (this.responseData.status) {
               console.log("responseData = " + this.responseData);
-              // localStorage.setItem("userData", JSON.stringify(this.responseData));
-              // this.navCtrl.push(TabsPage);
             } else {
-              console.log("User already exists");
+              console.log(
+                "Location adding failed due to already exists or invalid."
+              );
             }
           },
           err => {
@@ -100,6 +114,20 @@ export class HomePage {
     // });
 
     modal.present();
+  }
+
+  getNearLocations(loc) {
+    let locationsLoaded = this.locations.load(loc);
+    console.log("LocationsLoaded = " + locationsLoaded);
+    Promise.all([locationsLoaded]).then(result => {
+      console.log("Result = " + result);
+      let locations = result[0];
+      console.log("Locations = " + locations);
+      // debugger;
+      for (let location of locations) {
+        console.log(location);
+      }
+    });
   }
 
   backToWelcome() {

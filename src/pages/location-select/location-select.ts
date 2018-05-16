@@ -65,6 +65,7 @@ export class LocationSelectPage {
           this.placesService = new google.maps.places.PlacesService(
             this.maps.map
           );
+          this.searchDisabled = false;
           console.log(this.autocompleteService);
           // this.placesService.getDetails({ location: this.loc }, details => {
           //   this.zone.run(() => {

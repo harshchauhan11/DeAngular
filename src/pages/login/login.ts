@@ -17,7 +17,7 @@ export class Login {
   }
 
   login() {
-    this.authService.postData(this.userData, "login.php").then(
+    this.authService.checkLogin(this.userData).then(
       result => {
         // console.log(result);
         this.responseData = result;

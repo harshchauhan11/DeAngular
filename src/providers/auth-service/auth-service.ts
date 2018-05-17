@@ -58,6 +58,11 @@ export class AuthServiceProvider {
   }
 
   getSavedLocations(userPostData) {
+    // debugger;
     return this.postData(userPostData, apiCalls.postLocationHistoryApi);
+  }
+
+  getVendorProfile(req) {
+    return this.postData(req, apiCalls.getVendorProfileApi);
   }
 }

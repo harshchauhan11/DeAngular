@@ -9,11 +9,20 @@ import { HomePage } from '../home/home';
 })
 export class TabsPage {
 
-  tab1Root = HomePage;
-  tab2Root = AboutPage;
-  tab3Root = ContactPage;
+  tabs = [
+    { title: "Home", root: HomePage, icon: "home" },
+    { title: "About", root: AboutPage, icon: "information-circle" },
+    { title: "Contact", root: ContactPage, icon: "contacts" }
+  ];
+  // tab1Root = HomePage;
+  // tab2Root = AboutPage;
+  // tab3Root = ContactPage;
 
   constructor() {
-
+    this.tabs = [
+      { title: "Home", root: HomePage, icon: "home" },
+      { title: "About", root: AboutPage, icon: "information-circle" },
+      { title: "Contact", root: ContactPage, icon: "contacts" }
+    ];
   }
 }

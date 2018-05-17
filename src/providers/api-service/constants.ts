@@ -30,3 +30,4 @@ export const LOGIN: string = "login.php";
 export const LOCATIONS: string = "locations.php";
 export const NEAR: string = "near.php";
 export const LOCATIONSHISTORY: string = "locations_history.php";
+export const VENDOR_PROFILE: string = "store_profile.php";

@@ -23,6 +23,8 @@ import { LocationSelectPage } from '../pages/location-select/location-select';
 import { LocationParamProvider } from '../providers/location-param/location-param';
 import { Locations } from '../providers/locations/locations';
 import { ApiServiceProvider } from '../providers/api-service/api-service';
+import { ProfilePage } from '../pages/profile/profile';
+import { TabsStorePage } from '../pages/tabs_store/tabs_store';
 
 @NgModule({
   declarations: [
@@ -34,8 +36,10 @@ import { ApiServiceProvider } from '../providers/api-service/api-service';
     Login,
     Signup,
     TabsPage,
+    TabsStorePage,
     Products,
-    LocationSelectPage
+    LocationSelectPage,
+    ProfilePage
   ],
   imports: [
     BrowserModule, HttpModule,
@@ -51,8 +55,10 @@ import { ApiServiceProvider } from '../providers/api-service/api-service';
     Login,
     Signup,
     TabsPage,
+    TabsStorePage,
     Products,
-    LocationSelectPage
+    LocationSelectPage,
+    ProfilePage
   ],
   providers: [
     StatusBar,

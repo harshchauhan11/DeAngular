@@ -1,6 +1,5 @@
 // http://ionicframework.com/docs/theming/
 
-
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These
@@ -15,5 +14,35 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 a {
-    color: color($colors, deRed);
+  color: color($colors, deRed);
+}
+.tabs-md .tab-button .tab-button-icon {
+  color: color($colors, white);
+}
+.tabs-md .tab-button[aria-selected="true"] .tab-button-icon {
+  color: color($colors, white);
+  text-shadow: 0 0 20px rgba(0,0,0,.5);
+}
+.tabs-md[tabsHighlight="true"] .tab-highlight {
+  background-color: color($colors, gray);
+  height: 2px;
+}
+.tabbar {
+    background: color($colors, gray) !important;  
+}
+.tabbar a {
+  background: color($colors, gray);
+  margin: 5px !important;
+}
+.tabbar a[aria-selected="true"] {
+  // border-top: 1px !important;
+  // border-style: solid;
+  color: color($colors, white) !important;
+  font-weight: bold;
+  background: color($colors, deBlue);
+  border-radius: 10px;
+  text-shadow: 0 0 20px rgba(0,0,0,.5);
+}
+.tabbar a {
+  color: color($colors, white) !important;
 }

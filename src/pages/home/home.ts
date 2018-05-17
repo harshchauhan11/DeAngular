@@ -1,9 +1,12 @@
 import { Component } from "@angular/core";
-import { NavController, App, ModalController } from "ionic-angular";
+import { NavController, App, ModalController, Tab } from "ionic-angular";
 import { AuthServiceProvider } from "../../providers/auth-service/auth-service";
 import { LocationSelectPage } from "../location-select/location-select";
 import { LocationParamProvider } from "../../providers/location-param/location-param";
 import { Locations } from "../../providers/locations/locations";
+import { ProfilePage } from "../profile/profile";
+import { TabsStorePage } from "../tabs_store/tabs_store";
+import { TabsPage } from "../tabs/tabs";
 
 @Component({
   selector: "page-home",
@@ -35,6 +38,7 @@ export class HomePage {
     public locations: Locations
   ) {
     const data = JSON.parse(localStorage.getItem("userData"));
+    // debugger;
     this.userDetails = data.body;
 
     this.userPostData.uid = parseInt(this.userDetails.uid, 10);
@@ -127,6 +131,16 @@ export class HomePage {
       for (let location of locations) {
         console.log(location);
       }
+    });
+  }
+
+  profileStore(i) {
+    console.log("Hello Store : "+i);
+
+    // console.log(this.navCtrl.getActive().name);
+    this.navCtrl.push(ProfilePage, {
+      storeId: i,
+      token: this.userPostData.token
     });
   }
 

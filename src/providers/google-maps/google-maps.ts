@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { ConnectivityServiceProvider } from '../connectivity-service/connectivity-service';
 import { Geolocation } from '@ionic-native/geolocation';
+import { GoogleMap, GoogleMaps } from '@ionic-native/google-maps';
 import { LocationParamProvider } from '../location-param/location-param'
 import {} from '@types/google-maps';
 
@@ -20,7 +21,7 @@ export class GoogleMapsProvider {
   apiKey: string = "AIzaSyCZo0kxIB_FBr3J76voR7bZBdfEJLwCLPQ";
   loc: any;
  
-  constructor(public connectivityService: ConnectivityServiceProvider, public geolocation: Geolocation, private locationParam: LocationParamProvider) {
+  constructor(public connectivityService: ConnectivityServiceProvider, private googleMaps: GoogleMaps, private geolocation: Geolocation, private locationParam: LocationParamProvider) {
     this.loc = locationParam.loc;
   }
  
@@ -96,48 +97,7 @@ export class GoogleMapsProvider {
         let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
         this.loc.lat = position.coords.latitude;
         this.loc.lng = position.coords.longitude;
-        let geocoder = new google.maps.Geocoder();
-        // geocoder.geocode({ location: this.loc }, function(results, status) {
-        //   // console.log(typeof(status));
-        //   // console.log(results[0]);
-        //   // if (status == "OK") {
-        //   //   if (results[0]) {
-        //   //     for (
-        //   //       var ac = 0;
-        //   //       ac < results[0].address_components.length;
-        //   //       ac++
-        //   //     ) {
-        //   //       var component = results[0].address_components[ac];
-    
-        //   //       if (
-        //   //         component.types.includes("sublocality") ||
-        //   //         component.types.includes("sublocality_level_1")
-        //   //       ) {
-        //   //         storableLocation.sublocality = component.short_name;
-        //   //       } else if (
-        //   //         component.types.includes("sublocality") ||
-        //   //         component.types.includes("locality")
-        //   //       ) {
-        //   //         storableLocation.city = component.long_name;
-        //   //       } else if (
-        //   //         component.types.includes("administrative_area_level_1")
-        //   //       ) {
-        //   //         storableLocation.state = component.short_name;
-        //   //       } else if (component.types.includes("country")) {
-        //   //         storableLocation.country = component.long_name;
-        //   //         storableLocation.registered_country_iso_code =
-        //   //           component.short_name;
-        //   //       }
-        //   //     }
-        //   //   } else {
-        //   //     window.alert("No results found");
-        //   //   }
-            
-        //   // } else {
-        //   //   window.alert("Geocoder failed due to: " + status);
-        //   // }
-        // });
- 
+        
         let mapOptions = {
           center: latLng,
           zoom: 15,
@@ -147,6 +107,9 @@ export class GoogleMapsProvider {
         this.map = new google.maps.Map(this.mapElement, mapOptions);
         resolve(true);
  
+      }).catch((error) => {
+        console.log('Error getting location', error);
+        resolve(false);
       });
  
     });

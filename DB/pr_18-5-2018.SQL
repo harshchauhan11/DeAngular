@@ -1,3 +1,10 @@
+-- =============================================================================================================
+------------------------------------------------- DELVRT -------------------------------------------------------
+-- Author: Harsh Chauhan
+-- Backed up on: 18-05-2018
+-- =============================================================================================================
+-- CREATE QUERIES
+
 CREATE TABLE entityTypeMaster (
     idEntityTypeMaster serial NOT NULL,
     eType text NOT NULL,
@@ -132,3 +139,23 @@ CREATE TABLE stores (
 	CONSTRAINT fk_stores_storetypemaster FOREIGN KEY (storeTypeId) REFERENCES storeTypeMaster(idStoreTypeMaster),
 	CONSTRAINT fk_stores_users FOREIGN KEY (retailerId) REFERENCES users(uid)
 );
+
+
+
+
+-- DROP QUERIES
+DROP TABLE entityTypeMaster;
+DROP TABLE usersMaster;
+DROP TABLE users;
+DROP TABLE retailerTypeMaster;
+DROP TABLE storeTypeMaster;
+DROP TABLE locations;
+DROP TABLE locationsHistory;
+DROP TABLE productsCategoryMaster;
+DROP TABLE productsSubCategoryMaster;
+DROP TABLE products;
+DROP TABLE stores;
+
+
+-- CHECK geography DATATYPE EXISTS OR NOT IN POSTGIS
+\dT geography

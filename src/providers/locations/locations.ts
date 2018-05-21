@@ -24,7 +24,7 @@ export class Locations {
           this.responseData = JSON.parse(JSON.stringify(result));
           if (this.responseData.status) {
             console.log(JSON.parse(JSON.stringify(this.responseData)));
-            this.data = this.applyHaversine(JSON.parse(JSON.stringify(this.responseData.body)));
+            this.data = this.applyHaversine(loc, JSON.parse(JSON.stringify(this.responseData.body)));
 
             this.data.sort((locationA, locationB) => {
               return locationA.distance - locationB.distance;
@@ -44,10 +44,10 @@ export class Locations {
     });
   }
 
-  applyHaversine(locations) {
+  applyHaversine(user_loc, locations) {
     let usersLocation = {
-      lat: 40.713744,
-      lng: -74.009056
+      lat: user_loc.lat,
+      lng: user_loc.lng
     };
 
     locations.map(location => {
@@ -59,7 +59,7 @@ export class Locations {
       location.distance = this.getDistanceBetweenPoints(
         usersLocation,
         placeLocation,
-        "miles"
+        "km"
       ).toFixed(2);
     });
 
@@ -72,7 +72,7 @@ export class Locations {
       km: 6371
     };
 
-    let R = earthRadius[units || "miles"];
+    let R = earthRadius[units || "km"];
     let lat1 = start.lat;
     let lon1 = start.lng;
     let lat2 = end.lat;

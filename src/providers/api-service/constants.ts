@@ -1,12 +1,12 @@
 "use strict";
-import { HttpHeaders } from "@angular/common/http";
+// import { HttpHeaders } from "@angular/common/http";
 
-// export const origin: string = "http://13.127.199.206";              // AWS
-export const origin: string = "http://localhost";                      // Local
+export const origin: string = "http://13.127.199.206";              // AWS
+// export const origin: string = "http://localhost";                      // Local
 
 export const baseURL: string = origin + "/";
-// export const apiVersion: string = "DePHP";                          // AWS
-export const apiVersion: string = "am";                                // Local
+export const apiVersion: string = "DePHP";                          // AWS
+// export const apiVersion: string = "am";                                // Local
 
 export const apiURL: string = baseURL + apiVersion;
 export const API_BASE_URL: string = apiURL;

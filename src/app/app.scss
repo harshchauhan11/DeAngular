@@ -16,6 +16,10 @@
 a {
   color: color($colors, deRed);
 }
+.appBackground {
+  // background: url(../assets/imgs/5.jpg) center center / cover no-repeat;
+  background: #eee;
+}
 .tabs-md .tab-button .tab-button-icon {
   color: color($colors, white);
 }

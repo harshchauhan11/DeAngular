@@ -1,21 +1,22 @@
 <ion-header>
   <ion-navbar>
     <ion-row>
-      <ion-col>
-        <img ion-right src="assets/imgs/logo_white.png" class="navbarLogo" />
+      <ion-col col-auto>
+        <!-- <div class="navbarLogo"></div> -->
+        <img ion-right src="assets/imgs/logo_white_text.png" class="navbarLogo" />
       </ion-col>
       <ion-col text-right>
         <!-- <ion-title>Home</ion-title> -->
         <button ion-button (click)="launchLocationPage()">{{loc.name}}</button>
-        <button ion-button color="deBlue" (click)="logout()">Logout</button>
+        <button ion-button small color="deBlue" (click)="logout()"><ion-icon name="log-out"></ion-icon></button>
       </ion-col>
     </ion-row>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <!-- <h2>Welcome {{userDetails.fname}} to Delvrt !</h2> -->
-  <!-- <h3>Email: {{userDetails.email}}</h3> -->
+<ion-content padding text-center>
+  <h2><small>Welcome</small> {{userDetails.fname.toUpperCase()}} :)<br/><small>to Delvrt</small> !</h2>
+  <p>Email: {{userDetails.email}}</p>
   <!-- <h5>Location: {{loc.name}} [{{loc.lat}} {{loc.lng}}]</h5> -->
 
 
@@ -30,8 +31,9 @@
           </ion-avatar>
         <!-- </ion-col>
         <ion-col> -->
-          <h2>{{location.storeName}}</h2>
-          <p>{{location.place}} | {{location.distance}}</p>
+          <h2><b>{{location.storeName}}</b></h2>
+          <!-- <p><span class="capitalize left">{{location.place}}</span><span class="right">&bull; {{location.distance}} km</span></p> -->
+          <p><span class="capitalize">{{location.place}}</span> &bull; {{location.distance}} km</p>
         <!-- </ion-col>
       </ion-row> -->
       <!-- </a> -->

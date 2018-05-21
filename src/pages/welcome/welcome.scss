@@ -1,10 +1,13 @@
 page-welcome {
   #welcome {
     // background: color($colors, deBlue);
-    background: url(/assets/imgs/5.jpg) center center / cover no-repeat;
+    background: url(../assets/imgs/5.jpg) center center / cover no-repeat;
     h1 {
       font-size: 52px;
       margin-top: 20px;
+    }
+    h4 {
+      letter-spacing: 0px;
     }
     .marginTop {
       margin-top: 150px;
@@ -24,11 +27,19 @@ page-welcome {
     //   filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=12, OffY=12, Color='#444')";
     }
     button {
-        border-radius: 5px;
+        border-radius: 5px !important;
+        width: 75% !important;
+        margin: 0 auto;
+        // margin: 0px 20px !important;
+    }
+    .markSpan {
+      font-weight: bold;
+      font-size: 1.5em;
     }
     .copyright {
         text-transform: uppercase;
         font-weight: bold;
     }
+    .scroll-content{ overflow: hidden !important; }
   }
 }

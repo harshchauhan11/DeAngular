@@ -25,6 +25,10 @@ import { Locations } from '../providers/locations/locations';
 import { ApiServiceProvider } from '../providers/api-service/api-service';
 import { ProfilePage } from '../pages/profile/profile';
 import { TabsStorePage } from '../pages/tabs_store/tabs_store';
+import { NativeMapsProvider } from '../providers/native-maps/native-maps';
+import { JsMapsProvider } from '../providers/js-maps/js-maps';
+import { GoogleMaps } from '@ionic-native/google-maps';
+import { MapsProvider } from '../providers/maps/maps';
 
 @NgModule({
   declarations: [
@@ -71,7 +75,11 @@ import { TabsStorePage } from '../pages/tabs_store/tabs_store';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     LocationParamProvider,
     Locations,
-    ApiServiceProvider
+    ApiServiceProvider,
+    NativeMapsProvider,
+    JsMapsProvider,
+    GoogleMaps,
+    MapsProvider
   ]
 })
 export class AppModule {}

@@ -9,6 +9,7 @@ import {
 import { GoogleMapsProvider } from "../../providers/google-maps/google-maps";
 import { Geolocation } from "@ionic-native/geolocation";
 import { LocationParamProvider } from "../../providers/location-param/location-param";
+import {} from '@types/google-maps';
 
 declare var google;
 

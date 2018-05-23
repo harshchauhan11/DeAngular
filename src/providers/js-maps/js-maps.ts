@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import {} from 'google-maps';
 import {} from '@types/google-maps';
 
 declare var google;

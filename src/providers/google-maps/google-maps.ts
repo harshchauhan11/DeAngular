@@ -128,12 +128,13 @@ export class GoogleMapsProvider {
             mapTypeId: google.maps.MapTypeId.ROADMAP
           };
 
-          this.map = GoogleMaps.create(this.mapElement.nativeElement, mapOptions);
+          // this.map = GoogleMaps.create(this.mapElement, mapOptions);
+          this.map = new google.maps.Map(this.mapElement, mapOptions);
   
-          this.map.on(GoogleMapsEvent.MAP_READY).subscribe(() => {
-            console.log('Map is ready!');
-          });
-          // this.map = new google.maps.Map(this.mapElement, mapOptions);
+          // this.map.on(GoogleMapsEvent.MAP_READY).subscribe(() => {
+          //   console.log('Map is ready!');
+          // });
+          
           // this.mapsProvider.init(location, this.mapElement);
           resolve(true);
         })

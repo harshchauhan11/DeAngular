@@ -10,6 +10,7 @@ import { GoogleMapsProvider } from "../../providers/google-maps/google-maps";
 import { Geolocation } from "@ionic-native/geolocation";
 import { LocationParamProvider } from "../../providers/location-param/location-param";
 import {} from '@types/google-maps';
+import { MapsProvider } from "../../providers/maps/maps";
 
 declare var google;
 
@@ -43,7 +44,8 @@ export class LocationSelectPage {
     public platform: Platform,
     public geolocation: Geolocation,
     public viewCtrl: ViewController,
-    private locationParam: LocationParamProvider
+    private locationParam: LocationParamProvider,
+    public mapsProvider: MapsProvider,
   ) {
     this.searchDisabled = true;
     this.saveDisabled = false;
@@ -54,6 +56,10 @@ export class LocationSelectPage {
 
   ionViewDidLoad(): void {
     console.log("In ionViewDidLoad");
+    // this.platform.ready().then(() => {
+    //   this.findUserLocation();
+    // });
+
     var q = {};
 
     let mapLoaded = this.maps
@@ -67,7 +73,7 @@ export class LocationSelectPage {
             this.maps.map
           );
           this.searchDisabled = false;
-          console.log(this.autocompleteService);
+          // console.log(this.autocompleteService);
           // this.placesService.getDetails({ location: this.loc }, details => {
           //   this.zone.run(() => {
           //     // location.name = details.name;
@@ -102,6 +108,26 @@ export class LocationSelectPage {
       
       // console.log(this.storableLocation);
     // this.searchDisabled = false;
+  }
+
+  findUserLocation() {
+    let options = {
+      enableHighAccuracy: true,
+      timeout: 25000
+    };
+
+    this.geolocation
+      .getCurrentPosition(options)
+      .then(position => {
+        this.location = {
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude
+        };
+        this.mapsProvider.init(this.location, this.mapElement);
+      })
+      .catch(error => {
+        console.log("Error getting location", error);
+      });
   }
 
   setStorableLoc(that, myFunc) {
@@ -186,7 +212,7 @@ export class LocationSelectPage {
   }
 
   searchPlace() {
-    // console.log("In searchPlace");
+    console.log("In searchPlace");
     this.saveDisabled = true;
 
     if (this.query.length > 0 && !this.searchDisabled) {

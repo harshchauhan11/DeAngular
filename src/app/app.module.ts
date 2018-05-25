@@ -30,6 +30,8 @@ import { JsMapsProvider } from '../providers/js-maps/js-maps';
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { MapsProvider } from '../providers/maps/maps';
 
+import { Ionic2RatingModule } from 'ionic2-rating';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -47,7 +49,8 @@ import { MapsProvider } from '../providers/maps/maps';
   ],
   imports: [
     BrowserModule, HttpModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    Ionic2RatingModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

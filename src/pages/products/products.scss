@@ -1,3 +1,44 @@
 page-products {
-
+    .accordion-list {
+        background: color($colors, white);
+        height: 100%;
+    }
+    .section {
+        background: color($colors, lightGray);
+        color: #000;
+        margin-bottom: 4px;
+        border-radius: 10px;
+    }
+    .section-active {
+        background: #ffc400;
+        color: #000;
+    }
+ 
+    .child {
+        background: #e8e7e6;
+        color: #000;
+        margin-bottom: 4px;
+    }
+    .child-item {
+        // background: #f3f2f1;
+        padding: 20px;
+        margin-left: 20px;
+    }
+    .item {
+        border: 0 !important;
+    }
+    .label {
+        margin: 0px;
+    }
+    .list {
+        margin-bottom: 4px;
+    }
+    .button-outline-md {
+        background: color($colors, deRed);
+        border-color: color($colors, deRed);
+        border-width: 2px;
+        font-weight: bold;
+        border-radius: 5px;
+        color: color($colors, white);
+    }
 }

@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { IonicPage, NavController, NavParams } from "ionic-angular";
 import { AuthServiceProvider } from "../../providers/auth-service/auth-service";
+import { Products } from "../products/products";
 
 @IonicPage()
 @Component({
@@ -114,5 +115,14 @@ export class ProfilePage {
 
   like(post) {
     // this.toastCtrl.create("Like clicked");
+  }
+
+  onModelChange(event: Event) {
+    // event.stopPropagation();
+    console.log("Stars clicked.");
+  }
+
+  getProducts() {
+    this.navCtrl.push(Products);
   }
 }

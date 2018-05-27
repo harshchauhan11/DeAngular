@@ -140,6 +140,20 @@ CREATE TABLE stores (
 	CONSTRAINT fk_stores_users FOREIGN KEY (retailerId) REFERENCES users(uid)
 );
 
+CREATE TABLE productsRetailerMapping (
+    idProductsRetailer serial NOT NULL,
+    storeId integer NOT NULL,
+    productId integer NOT NULL,
+    isActive boolean DEFAULT false,
+    createdOn timestamp with time zone DEFAULT now() NOT NULL,
+    createdBy integer,
+    updatedOn timestamp with time zone,
+    updatedBy integer,
+	CONSTRAINT productsRetailerMapping_pk PRIMARY KEY (idProductsRetailer),
+    CONSTRAINT fk_productsRetailerMapping_stores FOREIGN KEY (storeId) REFERENCES stores(idStore),
+    CONSTRAINT fk_productsRetailerMapping_products FOREIGN KEY (productId) REFERENCES products(idProducts)
+);
+
 
 
 
